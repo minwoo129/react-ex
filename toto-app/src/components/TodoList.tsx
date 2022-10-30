@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { FC } from 'react';
 import TodoListItem from './TodoListItem';
 import './TodoList.scss';
+import { TodoListProps } from '../types/commonType';
 
-const TodoList = () => {
+const TodoList: FC<TodoListProps> = ({ todos }) => {
   return (
     <div className="TodoList">
-      <TodoListItem />
-      <TodoListItem />
-      <TodoListItem />
+      {todos.map((todo) => {
+        return <TodoListItem todo={todo} key={todo.id} />;
+      })}
     </div>
   );
 };
