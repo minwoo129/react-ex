@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import TodoTemplate from './components/TodoTemplate';
@@ -24,9 +24,24 @@ const App = () => {
       checked: false,
     },
   ]);
+  const nextId = useRef<number>(4);
+
+  const onInsert = useCallback(
+    (text: string) => {
+      const todo: TodoType = {
+        id: nextId.current,
+        text,
+        checked: false,
+      };
+      setTodos([...todos, todo]);
+      nextId.current += 1;
+    },
+    [todos],
+  );
+
   return (
     <TodoTemplate>
-      <TodoInsert />
+      <TodoInsert onInsert={onInsert} />
       <TodoList todos={todos} />
     </TodoTemplate>
   );
