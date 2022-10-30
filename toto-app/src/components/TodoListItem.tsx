@@ -8,11 +8,11 @@ import { TodoListItemProps } from '../types/commonType';
 import cn from 'classnames';
 import './TodoListItem.scss';
 
-const TodoListItem: FC<TodoListItemProps> = ({ todo, onRemove }) => {
+const TodoListItem: FC<TodoListItemProps> = ({ todo, onRemove, onToggle }) => {
   const { id, text, checked } = todo;
   return (
     <div className="TodoListItem">
-      <div className={cn('checkbox', { checked })}>
+      <div className={cn('checkbox', { checked })} onClick={() => onToggle(id)}>
         {checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
         <div className="text">{text}</div>
       </div>

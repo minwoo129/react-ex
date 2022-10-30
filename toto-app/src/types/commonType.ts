@@ -1,5 +1,6 @@
 interface TodoListItemCommonProps {
   onRemove(id: number): void;
+  onToggle(id: number): void;
 }
 
 export interface TodoListProps extends TodoListItemCommonProps {
