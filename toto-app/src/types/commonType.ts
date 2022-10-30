@@ -1,14 +1,18 @@
-export type TodoListProps = {
+interface TodoListItemCommonProps {
+  onRemove(id: number): void;
+}
+
+export interface TodoListProps extends TodoListItemCommonProps {
   todos: TodoType[];
-};
+}
 
-export type TodoListItemProps = {
+export interface TodoListItemProps extends TodoListItemCommonProps {
   todo: TodoType;
-};
+}
 
-export type TodoInsertProps = {
+export interface TodoInsertProps {
   onInsert(value: string): void;
-};
+}
 
 export type TodoType = {
   id: number;
