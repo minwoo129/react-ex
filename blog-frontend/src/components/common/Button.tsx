@@ -1,5 +1,5 @@
 import React, { ButtonHTMLAttributes, FC } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import palette from '../../lib/styles/palette';
 
 const StyledButton = styled.button`
@@ -15,9 +15,30 @@ const StyledButton = styled.button`
   &:hover {
     background: ${palette.gray[6]};
   }
+  ${(props) =>
+    'fullWidth' in props &&
+    css`
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+      width: 100%;
+      font-size: 1.125rem;
+    `}
+  ${(props) =>
+    'cyan' in props &&
+    css`
+      background: ${palette.cyan[5]};
+      &:hover {
+        background: ${palette.cyan[4]};
+      }
+    `}
 `;
 
-const Button: FC<ButtonHTMLAttributes<HTMLButtonElement>> = (props) => {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  fullWidth?: boolean;
+  cyan?: boolean;
+}
+
+const Button: FC<ButtonProps> = (props) => {
   return <StyledButton {...props} />;
 };
 

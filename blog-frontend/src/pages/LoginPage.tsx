@@ -1,8 +1,14 @@
 import React, { FC } from 'react';
+import AuthForm from '../components/auth/AuthForm';
+import AuthTemplate from '../components/auth/AuthTemplate';
 import { LoginPageProps } from './pageType';
 
 const LoginPage: FC<LoginPageProps> = ({}) => {
-  return <div>로그인</div>;
+  return (
+    <AuthTemplate>
+      <AuthForm type="login" />
+    </AuthTemplate>
+  );
 };
 
 export default LoginPage;
