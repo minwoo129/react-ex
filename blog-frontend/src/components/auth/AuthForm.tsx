@@ -1,4 +1,4 @@
-import React, { FC, useMemo } from 'react';
+import React, { ChangeEvent, FC, FormEvent, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import palette from '../../lib/styles/palette';
@@ -60,25 +60,36 @@ const textMap = {
 
 type AuthFormProps = {
   type: 'login' | 'register';
+  form: {
+    username: string,
+    password: string,
+    passwordConfirm?: string
+  }
+  onChange(e:ChangeEvent<HTMLInputElement>): void,
+  onSubmit(e:FormEvent<HTMLFormElement>): void
 };
 
-const AuthForm: FC<AuthFormProps> = ({ type }) => {
+const AuthForm: FC<AuthFormProps> = ({ type, form, onChange, onSubmit }) => {
   const text = useMemo(() => textMap[type], [type]);
 
   return (
     <AuthFormBlock>
       <h3>{text}</h3>
-      <form>
+      <form onSubmit={(e) => {}}>
         <StyledInput
           autoComplete="username"
           name="username"
           placeholder="아이디"
+          onChange={onChange}
+          value={form.username}
         />
         <StyledInput
           autoComplete="new-password"
           name="password"
           placeholder="비밀번호"
           type={'password'}
+          onChange={onChange}
+          value={form.password}
         />
         {type == 'register' && (
           <StyledInput
@@ -86,6 +97,8 @@ const AuthForm: FC<AuthFormProps> = ({ type }) => {
             name="passwordConfirm"
             placeholder="비밀번호 확인"
             type={'password'}
+            onChange={onChange}
+            value={form.passwordConfirm}
           />
         )}
 

@@ -6,7 +6,7 @@ import {
 
 export type changeFieldType = {
   form: 'register' | 'login';
-  key: 'username' | 'password' | 'passwordConfirm';
+  key: string; // 'username' | 'password' | 'passwordConfirm'
   value: string;
 };
 
