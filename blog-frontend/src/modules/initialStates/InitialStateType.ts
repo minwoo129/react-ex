@@ -10,3 +10,7 @@ export type AuthInitialStateType = {
     password: string;
   };
 };
+
+export type LoadingInitialStateType = {
+  [key in string]: boolean
+}

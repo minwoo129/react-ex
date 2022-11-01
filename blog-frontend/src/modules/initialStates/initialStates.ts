@@ -1,4 +1,4 @@
-import { AuthInitialStateType } from './InitialStateType';
+import { AuthInitialStateType, LoadingInitialStateType } from './InitialStateType';
 
 export const AuthInitialState: AuthInitialStateType = {
   count: 0,
@@ -12,3 +12,7 @@ export const AuthInitialState: AuthInitialStateType = {
     password: '',
   },
 };
+
+export const LoadingInitialState: LoadingInitialStateType = {
+  
+}
