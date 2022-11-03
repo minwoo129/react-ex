@@ -20,4 +20,6 @@ const invokeAPI = ({method, path}:invokeAPIType1) => ({subPath = null, params = 
     })
 }
 
+export type invokeAPIType = ReturnType<typeof invokeAPI>;
+
 export default invokeAPI;
