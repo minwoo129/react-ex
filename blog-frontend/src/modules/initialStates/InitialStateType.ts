@@ -9,6 +9,8 @@ export type AuthInitialStateType = {
     username: string;
     password: string;
   };
+  authError: null | any,
+  auth: null | any
 };
 
 export type LoadingInitialStateType = {

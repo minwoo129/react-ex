@@ -11,6 +11,9 @@ export const AuthInitialState: AuthInitialStateType = {
     username: '',
     password: '',
   },
+  auth: null,
+  authError: null
+
 };
 
 export const LoadingInitialState: LoadingInitialStateType = {

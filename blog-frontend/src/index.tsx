@@ -6,10 +6,13 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
+import { sagaMiddleware } from './store/configure';
+import { rootSaga } from './modules/reducer';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 );
+sagaMiddleware.run(rootSaga)
 root.render(
   <Provider store={store}>
     <BrowserRouter>
